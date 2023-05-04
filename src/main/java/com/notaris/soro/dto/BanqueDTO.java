@@ -2,12 +2,12 @@ package com.notaris.soro.dto;
 
 import com.notaris.soro.enums.Nature;
 import com.notaris.soro.models.Banque;
-import jakarta.persistence.Column;
 import lombok.Builder;
 import lombok.Data;
 
-@Data
+
 @Builder
+@Data
 public class BanqueDTO {
     private Integer id;
 
@@ -46,8 +46,7 @@ public class BanqueDTO {
                 .nature(banque.getNature())
                 .nomDirigeant(banque.getNomDirigeant())
                 .sigle(banque.getSigle())
-                .raisonSociale(banque.getRaisonSociale())
-                .build();
+                .raisonSociale(banque.getRaisonSociale()).build();
     }
 
 
