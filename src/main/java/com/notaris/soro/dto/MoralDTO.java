@@ -71,6 +71,7 @@ public class MoralDTO  {
         moral.setLocalisation(dto.getLocalisation());
         moral.setNumRCCM(dto.getNumRCCM());
         moral.setNature(dto.getNature());
+        moral.setAdresse(AdresseDTO.toEntity(dto.getAdresse()));
         moral.setLogo(dto.getLogo());
         moral.setRepresentantLegal(dto.getRepresentantLegal());
         moral.setNumPieceDirigeant(dto.getNumPieceDirigeant());

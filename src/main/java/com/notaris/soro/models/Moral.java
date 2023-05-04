@@ -2,6 +2,7 @@ package com.notaris.soro.models;
 
 import com.notaris.soro.enums.Nature;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -35,6 +36,9 @@ public class Moral extends AbstractEntity implements Serializable {
 
     @Column(name = "dfe")
     private String DFE;
+
+    @Embedded
+    private Adresse adresse;
 
     @Column(name = "logo")
     private String logo;
