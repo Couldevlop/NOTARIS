@@ -1,0 +1,8 @@
+package com.notaris.soro.enums;
+
+public enum TypeActeImmo {
+    ACQUEREUR_PERSONNE_PHYSIQUE,
+    ACQUEREUR_PERSONNE_MORALE,
+    VENDEUR_PERSONNE_PHYSIQUE,
+    VENDEUR_PERSONNE_MORALE
+}
