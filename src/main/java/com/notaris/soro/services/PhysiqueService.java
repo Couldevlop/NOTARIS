@@ -9,7 +9,7 @@ import java.util.List;
 public interface PhysiqueService {
     PhysiqueDTO save(PhysiqueDTO dto);
     PhysiqueDTO findById(Integer id);
-    List<PhysiqueDTO> findAll(PhysiqueDTO dto);
+    List<PhysiqueDTO> findAll();
 
     PhysiqueDTO findByEmail(String email);
 

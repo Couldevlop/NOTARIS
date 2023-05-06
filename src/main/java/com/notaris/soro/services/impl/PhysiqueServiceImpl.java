@@ -41,7 +41,7 @@ public class PhysiqueServiceImpl implements PhysiqueService {
     }
 
     @Override
-    public List<PhysiqueDTO> findAll(PhysiqueDTO dto) {
+    public List<PhysiqueDTO> findAll() {
         return physiqueRepository.findAll().stream().map(PhysiqueDTO::toEntityDTO).collect(Collectors.toList());
     }
 

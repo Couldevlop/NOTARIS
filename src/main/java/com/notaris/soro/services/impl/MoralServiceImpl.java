@@ -41,7 +41,7 @@ public class MoralServiceImpl implements MoralService {
     }
 
     @Override
-    public List<MoralDTO> findAll(MoralDTO dto) {
+    public List<MoralDTO> findAll() {
         return moralRepository.findAll().stream().map(MoralDTO::toEntityDTO).collect(Collectors.toList());
     }
 

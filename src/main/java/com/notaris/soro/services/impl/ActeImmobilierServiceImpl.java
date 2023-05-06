@@ -45,7 +45,7 @@ public class ActeImmobilierServiceImpl implements ActeImmoService {
     }
 
     @Override
-    public List<ActeImmobilierDTO> findAll(ActeImmobilierDTO dto) {
+    public List<ActeImmobilierDTO> findAll() {
         return acteImmobilierRepository.findAll().stream().map(ActeImmobilierDTO::toEntityDTO).collect(Collectors.toList());
     }
 

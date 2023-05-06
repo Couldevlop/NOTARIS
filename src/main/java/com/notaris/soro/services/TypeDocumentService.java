@@ -8,6 +8,6 @@ import java.util.List;
 public interface TypeDocumentService {
     TypeDocumentDTO save(TypeDocumentDTO dto);
     TypeDocumentDTO findById(Integer id);
-    List<TypeDocumentDTO> findAll(TypeDocumentDTO dto);
+    List<TypeDocumentDTO> findAll();
     void delete(Integer id);
 }

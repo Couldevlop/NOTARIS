@@ -43,7 +43,7 @@ public class TypeDocumentServiceImpl implements TypeDocumentService {
     }
 
     @Override
-    public List<TypeDocumentDTO> findAll(TypeDocumentDTO dto) {
+    public List<TypeDocumentDTO> findAll() {
         return typeDocumentRepository.findAll().stream().map(TypeDocumentDTO::toEntityDTO).collect(Collectors.toList());
     }
 

@@ -8,7 +8,7 @@ import java.util.List;
 public interface ActeImmoService {
     ActeImmobilierDTO save(ActeImmobilierDTO dto);
     ActeImmobilierDTO findById(Integer id);
-    List<ActeImmobilierDTO> findAll(ActeImmobilierDTO dto);
+    List<ActeImmobilierDTO> findAll();
     DocumentsDTO save(Integer idDossier, DocumentsDTO dto);
     void delete(Integer id);
 

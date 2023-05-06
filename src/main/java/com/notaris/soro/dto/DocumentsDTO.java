@@ -2,10 +2,10 @@ package com.notaris.soro.dto;
 
 import com.notaris.soro.models.Documents;
 import com.notaris.soro.models.TypeDocument;
-import jakarta.persistence.Column;
-import jakarta.persistence.OneToOne;
 import lombok.Builder;
 import lombok.Data;
+
+import java.util.Optional;
 
 @Data
 @Builder
@@ -34,7 +34,7 @@ public class DocumentsDTO {
     }
 
 
-    public static Documents toEntity(DocumentsDTO dto){
+    public static Documents toEntity(Optional<Documents> dto){
         Documents doc = new Documents();
         doc.setId(dto.getId());
         doc.setDocName(dto.getDocName());

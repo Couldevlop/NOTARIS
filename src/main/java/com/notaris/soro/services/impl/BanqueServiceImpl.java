@@ -43,7 +43,7 @@ public class BanqueServiceImpl implements BanqueService {
     }
 
     @Override
-    public List<BanqueDTO> findAll(BanqueDTO dto) {
+    public List<BanqueDTO> findAll() {
         return banqueRepository.findAll().stream().map(BanqueDTO::toEntityDTO).collect(Collectors.toList());
     }
 
