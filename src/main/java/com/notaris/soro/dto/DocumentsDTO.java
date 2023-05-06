@@ -5,8 +5,6 @@ import com.notaris.soro.models.TypeDocument;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.Optional;
-
 @Data
 @Builder
 public class DocumentsDTO {
@@ -20,7 +18,7 @@ public class DocumentsDTO {
 
     private String docType;
 
-    public static DocumentsDTO toEntityDTO(Documents doc){
+    public static DocumentsDTO toEntityDTO(DocumentsDTO doc){
         if(doc == null){
             return null;
         }
@@ -34,7 +32,7 @@ public class DocumentsDTO {
     }
 
 
-    public static Documents toEntity(Optional<Documents> dto){
+    public static Documents toEntity(Documents dto){
         Documents doc = new Documents();
         doc.setId(dto.getId());
         doc.setDocName(dto.getDocName());

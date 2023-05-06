@@ -1,14 +1,9 @@
 package com.notaris.soro.dto;
 
 import com.notaris.soro.enums.TypeActeImmo;
-import com.notaris.soro.models.AbstractEntity;
 import com.notaris.soro.models.ActeImmobilier;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,10 +33,10 @@ public class ActeImmobilierDTO{
           .mandataire(acteImmobilier.getMandataire())
           .vendeur(acteImmobilier.getVendeur())
           .typeActeImmo(acteImmobilier.getTypeActeImmo())
-          .documentsDTOList(
+         /* .documentsDTOList(
                   acteImmobilier.getDocuments() != null ? acteImmobilier.getDocuments().
                           stream().map(DocumentsDTO::toEntityDTO).collect(Collectors.toList()):null
-          )
+          )*/
           .build();
  }
 

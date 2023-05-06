@@ -10,6 +10,7 @@ import com.notaris.soro.services.ActeImmoService;
 import com.notaris.soro.validators.ActeImmobilierValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,8 +21,9 @@ import java.util.stream.Collectors;
 @Slf4j
 @RequiredArgsConstructor
 public class ActeImmobilierServiceImpl implements ActeImmoService {
-
+   @Autowired
     private ActeImmobilierRepository acteImmobilierRepository;
+   @Autowired
     private DocumentRepository documentRepository;
     @Override
     public ActeImmobilierDTO save(ActeImmobilierDTO dto) {
@@ -75,7 +77,7 @@ public class ActeImmobilierServiceImpl implements ActeImmoService {
         // ajouter le document au dossier existant
         ActeImmobilierDTO acteImmobilierDTO = findById(idDossier);
         List<DocumentsDTO> dtoList = new ArrayList<>();
-        dtoList.add(DocumentsDTO.toEntityDTO(documentRepository.save(DocumentsDTO.toEntity(dto))));
+        //dtoList.add(DocumentsDTO.toEntity(documentRepository.save(DocumentsDTO.toEntityDTO(dto))));
         acteImmobilierDTO.setDocumentsDTOList(dtoList);
         save(acteImmobilierDTO);
         return dto;
