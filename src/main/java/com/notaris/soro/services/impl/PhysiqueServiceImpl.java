@@ -1,26 +1,74 @@
 package com.notaris.soro.services.impl;
 
 import com.notaris.soro.dto.PhysiqueDTO;
+import com.notaris.soro.exceptions.EntityNotFoundException;
+import com.notaris.soro.exceptions.InvalidEntityException;
+import com.notaris.soro.models.Physique;
+import com.notaris.soro.repositories.PhysiqueRepository;
 import com.notaris.soro.services.PhysiqueService;
+import com.notaris.soro.validators.PhysiqueValidator;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+@Slf4j
+@RequiredArgsConstructor
 public class PhysiqueServiceImpl implements PhysiqueService {
+    private PhysiqueRepository physiqueRepository;
     @Override
     public PhysiqueDTO save(PhysiqueDTO dto) {
-        return null;
+        List<String> errors = PhysiqueValidator.validate(dto);
+        if(!errors.isEmpty()){
+            log.info("l'objet est invalide");
+            throw new InvalidEntityException("L'objet est invalide");
+        }
+        return PhysiqueDTO.toEntityDTO(physiqueRepository.save(PhysiqueDTO.toEntity(dto)));
     }
 
     @Override
-    public PhysiqueDTO findBy(Integer id) {
-        return null;
+    public PhysiqueDTO findById(Integer id) {
+        if(id == null){
+            log.info("l'id est null");
+            throw new EntityNotFoundException("Impossible de trouver un client physique avec un id null");
+        }
+        return physiqueRepository.findById(id).map(PhysiqueDTO::toEntityDTO).orElseThrow(()->{
+            throw new EntityNotFoundException("Aucun client physique n'a été trouvé avec l'id:" + id);
+        });
     }
 
     @Override
-    public PhysiqueDTO findALL(PhysiqueDTO dto) {
-        return null;
+    public List<PhysiqueDTO> findAll(PhysiqueDTO dto) {
+        return physiqueRepository.findAll().stream().map(PhysiqueDTO::toEntityDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public PhysiqueDTO findByEmail(String email) {
+        if(email == null){
+            log.info("L'email fournit est vide");
+            throw new EntityNotFoundException("Impossible de trouver un client Physique avec un email null");
+        }
+        return physiqueRepository.findByEmail(email).map(PhysiqueDTO::toEntityDTO).orElseThrow(()->{
+            throw new EntityNotFoundException("Aucune client physique n'a été trouvé avec cet email:" + email);
+        });
+    }
+
+    @Override
+    public PhysiqueDTO findByNom(String nom) {
+        if(nom == null){
+            log.info("le nom fournit est null");
+            throw new EntityNotFoundException("Impossible de trouver un client Physique avec un nom null");
+        }
+        return physiqueRepository.findByNom(nom).map(PhysiqueDTO::toEntityDTO).orElseThrow(()->{
+            throw new EntityNotFoundException("Aucun client Physique n'a été trouvé avec le nom: " + nom);
+        });
     }
 
     @Override
     public void delete(Integer id) {
-
+      physiqueRepository.deleteById(id);
     }
 }

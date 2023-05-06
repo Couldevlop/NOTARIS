@@ -5,6 +5,8 @@ import com.notaris.soro.models.Banque;
 import lombok.Builder;
 import lombok.Data;
 
+import static com.sun.tools.javac.util.StringUtils.toUpperCase;
+
 
 @Builder
 @Data
@@ -14,6 +16,8 @@ public class BanqueDTO {
     private String sigle;
 
     private String raisonSociale;
+
+    private AdresseDTO adresse;
 
     private Nature nature;
 
@@ -45,7 +49,8 @@ public class BanqueDTO {
                 .DFE(banque.getDFE())
                 .nature(banque.getNature())
                 .nomDirigeant(banque.getNomDirigeant())
-                .sigle(banque.getSigle())
+                .sigle(toUpperCase(banque.getSigle()))
+                .adresse(AdresseDTO.toEntityDTO(banque.getAdresse()))
                 .raisonSociale(banque.getRaisonSociale()).build();
     }
 
@@ -61,10 +66,12 @@ public class BanqueDTO {
         b.setDFE(dto.getDFE());
         b.setFax(dto.getFax());
         b.setLogo(dto.getLogo());
+        b.setNature(b.getNature());
         b.setNumRCCM(dto.getNumRCCM());
         b.setRaisonSociale(dto.getRaisonSociale());
         b.setFixe(dto.getFixe());
-        b.setSigle(dto.getSigle());
+        b.setSigle(toUpperCase(dto.getSigle()));
+        b.setAdresse(b.getAdresse());
         b.setNomDirigeant(dto.getNomDirigeant());
         return b;
     }

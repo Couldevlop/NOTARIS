@@ -1,8 +1,6 @@
 package com.notaris.soro.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +13,17 @@ import java.io.Serializable;
 @Entity
 @Table(name = "cs_document")
 public class Documents extends AbstractEntity implements Serializable {
+    @Column(name = "dossierid")
     private Integer dossierId;
-    @OneToOne
+
+    @ManyToOne
     private TypeDocument typeDocument;
+
+    @Column(name = "nomdocument")
+    private String docName;
+
+    @Column(name = "typedocument")
+    private String docType;
+
+
 }

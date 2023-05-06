@@ -61,7 +61,7 @@ public class PhysiqueDTO  {
 
     }
 
-    private static Physique toEntity(PhysiqueDTO dto){
+    public static Physique toEntity(PhysiqueDTO dto){
         if(dto == null){
             return null;
         }

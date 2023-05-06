@@ -28,7 +28,7 @@ public class TypeDocumentDTO {
                 .build();
     }
 
-    public static TypeDocument toEntityDTO(TypeDocumentDTO dto){
+    public static TypeDocument toEntity(TypeDocumentDTO dto){
         if(dto == null){
             return null;
         }

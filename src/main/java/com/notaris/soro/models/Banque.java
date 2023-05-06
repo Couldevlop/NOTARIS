@@ -2,6 +2,7 @@ package com.notaris.soro.models;
 
 import com.notaris.soro.enums.Nature;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -23,6 +24,9 @@ public class Banque extends AbstractEntity implements Serializable {
 
     @Column(name = "raisonsociale")
     private String raisonSociale;
+
+    @Embedded
+    private Adresse adresse;
 
     @Column(name = "nature")
     private Nature nature;
