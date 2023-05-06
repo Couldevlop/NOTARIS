@@ -1,7 +1,9 @@
 package com.notaris.soro.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -14,10 +16,11 @@ import java.time.Instant;
 @EntityListeners(AuditingEntityListener.class)
 public class AbstractEntity implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     private Integer id;
 
-    @Column(name = "creationdate")
+    @Column(name = "creationdate", nullable = false, updatable = false)
     @CreatedDate
     private Instant creationDate;
 

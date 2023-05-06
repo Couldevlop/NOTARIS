@@ -46,24 +46,24 @@ public class MoralServiceImpl implements MoralService {
     }
 
     @Override
-    public MoralDTO findByEmail(String email) {
-        if(email == null){
+    public MoralDTO findByEmail(String activite) {
+        if(activite == null){
             log.info("l'id fournit est null");
             throw new EntityNotFoundException("Impossible de trouver un client Moral avec l'email null");
         }
-        return moralRepository.findByEmail(email).map(MoralDTO::toEntityDTO).orElseThrow(()->{
-            throw new EntityNotFoundException("Aucun client Moral n'a été trouvé avec l'eamail suivant: " + email);
+        return moralRepository.findByActivite(activite).map(MoralDTO::toEntityDTO).orElseThrow(()->{
+            throw new EntityNotFoundException("Aucun client Moral n'a été trouvé avec l'eamail suivant: " + activite);
         });
     }
 
     @Override
-    public MoralDTO findByNom(String nom) {
-        if(nom == null){
+    public MoralDTO findByNom(String sigle) {
+        if(sigle == null){
             log.info("l'id fournit est null");
             throw new EntityNotFoundException("Impossible de trouver un client Moral avec le nom null");
         }
-        return moralRepository.findByNom(nom).map(MoralDTO::toEntityDTO).orElseThrow(()->{
-            throw new EntityNotFoundException("Aucun client Moral n'a été trouvé avec le nom suivant: " + nom);
+        return moralRepository.findBySigle(sigle).map(MoralDTO::toEntityDTO).orElseThrow(()->{
+            throw new EntityNotFoundException("Aucun client Moral n'a été trouvé avec le nom suivant: " + sigle);
         });
     }
 

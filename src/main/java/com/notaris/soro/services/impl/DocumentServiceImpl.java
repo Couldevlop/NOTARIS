@@ -25,7 +25,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@Slf4j
 @RequiredArgsConstructor
 public class DocumentServiceImpl implements DocumentService {
 
@@ -52,7 +51,8 @@ public class DocumentServiceImpl implements DocumentService {
             doc.setDocName(docname);
             doc.setDossierId(null);
             doc.setId(null);
-            return DocumentsDTO.toEntityDTO(docRepository.save(doc));
+           // return DocumentsDTO.toEntityDTO(docRepository.save(doc));
+            return null;
         }
         catch(Exception e) {
             e.printStackTrace();
