@@ -73,7 +73,7 @@ public class PhysiqueDTO  {
         physique.setLieuDeTravail(dto.getLieuDeTravail());
         physique.setMobile(dto.getMobile());
         physique.setSituationMatrimoniale(dto.getSituationMatrimoniale());
-        physique.setEmail(dto.getEmail());
+        physique.setFixe(dto.getFixe());
         physique.setMobile(dto.getMobile());
         physique.setPrenom(dto.getPrenom());
         return physique;

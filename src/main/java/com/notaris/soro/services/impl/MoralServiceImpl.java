@@ -6,19 +6,22 @@ import com.notaris.soro.exceptions.InvalidEntityException;
 import com.notaris.soro.repositories.MoralRepository;
 import com.notaris.soro.services.MoralService;
 import com.notaris.soro.validators.MoralValidator;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor
+
 public class MoralServiceImpl implements MoralService {
-    private MoralRepository moralRepository;
+    private final MoralRepository moralRepository;
+
+    public MoralServiceImpl(MoralRepository moralRepository) {
+        this.moralRepository = moralRepository;
+    }
+
     @Override
     public MoralDTO save(MoralDTO dto) {
         List<String> errors = MoralValidator.validate(dto);

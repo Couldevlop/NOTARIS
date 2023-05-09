@@ -5,23 +5,25 @@ import com.notaris.soro.exceptions.EntityNotFoundException;
 import com.notaris.soro.exceptions.InvalidEntityException;
 import com.notaris.soro.repositories.BanqueRepository;
 import com.notaris.soro.services.BanqueService;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static com.sun.tools.javac.util.StringUtils.toUpperCase;
 
 
 @Service
 @Slf4j
-@RequiredArgsConstructor
+
 public class BanqueServiceImpl implements BanqueService {
 
-    private BanqueRepository banqueRepository;
+    private final BanqueRepository banqueRepository;
+
+    public BanqueServiceImpl(BanqueRepository banqueRepository) {
+        this.banqueRepository = banqueRepository;
+    }
+
     @Override
     public BanqueDTO save(BanqueDTO dto) {
         if(dto == null){
@@ -53,7 +55,7 @@ public class BanqueServiceImpl implements BanqueService {
             log.info("le nom est vide");
             throw new EntityNotFoundException("Impossible de trouver un client Banque avec un id null");
         }
-        return banqueRepository.findBySigle(toUpperCase(sigle)).map(BanqueDTO::toEntityDTO).orElseThrow(()->{
+        return banqueRepository.findBySigle(sigle).map(BanqueDTO::toEntityDTO).orElseThrow(()->{
             throw  new EntityNotFoundException("Aucune client banque n'a été trouvé avec le sigle suivant" + sigle);
         });
     }

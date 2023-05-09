@@ -15,15 +15,15 @@ public interface BanqueApi {
     @PostMapping(value = CLIENT_BANQUE_END_POINT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<BanqueDTO> save(@RequestBody BanqueDTO dto);
 
-    @GetMapping(value = CLIENT_BANQUE_END_POINT+ "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = CLIENT_BANQUE_END_POINT+ "/{id}",  produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<BanqueDTO> findById(@PathVariable Integer id);
 
-    @GetMapping(value = CLIENT_BANQUE_END_POINT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = CLIENT_BANQUE_END_POINT, produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<List<BanqueDTO>> findAll();
 
-    @GetMapping(value = CLIENT_BANQUE_END_POINT+ "/{sigle}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = CLIENT_BANQUE_END_POINT+ "/{sigle}", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<BanqueDTO> findBySigle(@PathVariable String sigle);
 
-    @DeleteMapping(value = CLIENT_BANQUE_END_POINT+ "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = CLIENT_BANQUE_END_POINT+ "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity delete(Integer id);
 }

@@ -16,7 +16,7 @@ public class SwaggerConfiguration {
 
     private Info apiInfo() {
         return new Info()
-                .title("gestion des stock API")
+                .title("NOTARIS API")
                 .description("API pour l'application de notaire")
                 .version("1.0")
                 .contact(apiContact())
