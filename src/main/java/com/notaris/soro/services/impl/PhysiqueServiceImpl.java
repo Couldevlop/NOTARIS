@@ -3,11 +3,9 @@ package com.notaris.soro.services.impl;
 import com.notaris.soro.dto.PhysiqueDTO;
 import com.notaris.soro.exceptions.EntityNotFoundException;
 import com.notaris.soro.exceptions.InvalidEntityException;
-import com.notaris.soro.models.Physique;
 import com.notaris.soro.repositories.PhysiqueRepository;
 import com.notaris.soro.services.PhysiqueService;
 import com.notaris.soro.validators.PhysiqueValidator;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +14,13 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor
 public class PhysiqueServiceImpl implements PhysiqueService {
-    private PhysiqueRepository physiqueRepository;
+    private final PhysiqueRepository physiqueRepository;
+
+    public PhysiqueServiceImpl(PhysiqueRepository physiqueRepository) {
+        this.physiqueRepository = physiqueRepository;
+    }
+
     @Override
     public PhysiqueDTO save(PhysiqueDTO dto) {
         List<String> errors = PhysiqueValidator.validate(dto);

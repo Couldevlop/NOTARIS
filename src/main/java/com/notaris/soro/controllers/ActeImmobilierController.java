@@ -6,7 +6,9 @@ import com.notaris.soro.dto.DocumentsDTO;
 import com.notaris.soro.services.ActeImmoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -28,13 +30,18 @@ public class ActeImmobilierController implements ActeImmobilierApi {
     }
 
     @Override
+    public ResponseEntity<List<DocumentsDTO>> findActeImmoDocByIdDossier(Integer iddossier) {
+        return ResponseEntity.ok(acteImmoService.findActeImmoDocByIddossier(iddossier));
+    }
+
+    @Override
     public ResponseEntity<List<ActeImmobilierDTO>> findAll() {
         return ResponseEntity.ok(acteImmoService.findAll());
     }
 
     @Override
-    public ResponseEntity<DocumentsDTO> save(Integer idDossier, DocumentsDTO dto) {
-        return ResponseEntity.ok(acteImmoService.save(idDossier,dto));
+    public ResponseEntity<ActeImmobilierDTO> save(Integer idDossier, MultipartFile file ) throws IOException {
+        return ResponseEntity.ok(acteImmoService.save(idDossier,file));
     }
 
     @Override

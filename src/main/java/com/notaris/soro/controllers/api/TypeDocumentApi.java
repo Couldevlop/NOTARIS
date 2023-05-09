@@ -16,13 +16,13 @@ public interface TypeDocumentApi {
     @PostMapping(value = TYPE_DOCUMENT_END_POINT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<TypeDocumentDTO> save(@RequestBody TypeDocumentDTO dto);
 
-    @GetMapping(value = TYPE_DOCUMENT_END_POINT+ "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = TYPE_DOCUMENT_END_POINT+ "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<TypeDocumentDTO> findById(@PathVariable Integer id);
 
-    @GetMapping(value = TYPE_DOCUMENT_END_POINT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = TYPE_DOCUMENT_END_POINT, produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<List<TypeDocumentDTO>> findAll();
 
-    @DeleteMapping(value = TYPE_DOCUMENT_END_POINT+ "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = TYPE_DOCUMENT_END_POINT+ "/{id}",  produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity delete(@PathVariable Integer id);
 
 }

@@ -75,6 +75,7 @@ public class MoralDTO  {
         moral.setLogo(dto.getLogo());
         moral.setRepresentantLegal(dto.getRepresentantLegal());
         moral.setNumPieceDirigeant(dto.getNumPieceDirigeant());
+        moral.setSigle(dto.getSigle());
         return moral;
     }
 }

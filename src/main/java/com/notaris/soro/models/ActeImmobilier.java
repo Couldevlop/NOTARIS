@@ -1,5 +1,6 @@
 package com.notaris.soro.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.notaris.soro.enums.TypeActeImmo;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,7 @@ public class ActeImmobilier extends AbstractEntity{
  private String vendeur;
 
  @Column(name = "typeacteimmo")
+ @Enumerated
  private TypeActeImmo typeActeImmo;
 
  @Column(name = "mandataire")
@@ -32,6 +34,7 @@ public class ActeImmobilier extends AbstractEntity{
  @Column(name = "commentaire")
  private String commentaire;
 
- @OneToMany
+ @OneToMany(mappedBy = "acteimmo")
+ @JsonIgnore
  private List<Documents> documents;
 }

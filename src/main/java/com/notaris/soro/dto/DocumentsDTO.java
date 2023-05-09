@@ -1,7 +1,9 @@
 package com.notaris.soro.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.notaris.soro.models.ActeImmobilier;
 import com.notaris.soro.models.Documents;
-import com.notaris.soro.models.TypeDocument;
+import jakarta.persistence.Lob;
 import lombok.Builder;
 import lombok.Data;
 
@@ -10,15 +12,20 @@ import lombok.Data;
 public class DocumentsDTO {
     private Integer id;
 
-    private Integer dossierId;
+   /* private Integer dossierId;
 
-    private TypeDocument typeDocument;
+    private TypeDocument typeDocument;*/
 
     private String docName;
-
     private String docType;
 
-    public static DocumentsDTO toEntityDTO(DocumentsDTO doc){
+    @Lob
+    @JsonIgnore
+    private byte[] data;
+    @JsonIgnore
+    private ActeImmobilier acteimmo;
+
+    public static DocumentsDTO toEntityDTO(Documents doc){
         if(doc == null){
             return null;
         }
@@ -27,8 +34,9 @@ public class DocumentsDTO {
                 .id(doc.getId())
                 .docName(doc.getDocName())
                 .docType(doc.getDocType())
-                .dossierId(doc.getDossierId())
-                .typeDocument(doc.getTypeDocument()).build();
+                .data(doc.getData())
+                .acteimmo(doc.getActeimmo())
+                .build();
     }
 
 
@@ -37,8 +45,8 @@ public class DocumentsDTO {
         doc.setId(dto.getId());
         doc.setDocName(dto.getDocName());
         doc.setDocType(dto.getDocType());
-        doc.setDossierId(dto.getDossierId());
-        doc.setTypeDocument(dto.getTypeDocument());
+        doc.setData(dto.getData());
+        doc.setActeimmo(dto.getActeimmo());
         return doc;
     }
 }

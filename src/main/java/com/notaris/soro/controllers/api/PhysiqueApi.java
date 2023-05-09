@@ -17,18 +17,18 @@ public interface PhysiqueApi {
     @PostMapping(value = CLIENT_PHYSIQUE_END_POINT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<PhysiqueDTO> save(@RequestBody PhysiqueDTO dto);
 
-    @GetMapping(value = CLIENT_PHYSIQUE_END_POINT+ "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = CLIENT_PHYSIQUE_END_POINT+ "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<PhysiqueDTO> findById(@PathVariable Integer id);
 
-    @GetMapping(value = CLIENT_PHYSIQUE_END_POINT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = CLIENT_PHYSIQUE_END_POINT, produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<List<PhysiqueDTO>> findAll();
 
-    @GetMapping(value = CLIENT_PHYSIQUE_END_POINT+ "/{email}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = CLIENT_PHYSIQUE_END_POINT+ "/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<PhysiqueDTO> findByEmail(@PathVariable String email);
 
-    @GetMapping(value = CLIENT_PHYSIQUE_END_POINT+ "/{nom}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    PhysiqueDTO findByNom(@PathVariable String nom);
+    @GetMapping(value = CLIENT_PHYSIQUE_END_POINT+ "/{nom}", produces = MediaType.APPLICATION_JSON_VALUE)
+    ResponseEntity<PhysiqueDTO> findByNom(@PathVariable String nom);
 
-    @DeleteMapping(value = CLIENT_MORAL_END_POINT+ "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity delete(@PathVariable Integer id);
+    @DeleteMapping(value = CLIENT_MORAL_END_POINT+ "/{id1}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    ResponseEntity delete(@PathVariable Integer id1);
 }

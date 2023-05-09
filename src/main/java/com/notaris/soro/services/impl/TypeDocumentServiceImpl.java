@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Slf4j
 public class TypeDocumentServiceImpl implements TypeDocumentService {
-    private TypeDocumentRepository typeDocumentRepository;
+    private final TypeDocumentRepository typeDocumentRepository;
 
 
     @Override
