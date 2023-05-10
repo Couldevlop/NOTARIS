@@ -1,8 +1,6 @@
 package com.notaris.soro.services;
 
-import com.notaris.soro.dto.ActeImmobilierDTO;
 import com.notaris.soro.dto.PhysiqueDTO;
-import com.notaris.soro.models.Physique;
 
 import java.util.List;
 

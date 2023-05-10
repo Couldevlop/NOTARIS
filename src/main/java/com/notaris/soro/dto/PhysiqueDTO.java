@@ -1,18 +1,9 @@
 package com.notaris.soro.dto;
 
-import com.notaris.soro.models.AbstractEntity;
-import com.notaris.soro.models.Adresse;
-import com.notaris.soro.models.Physique;
-import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import com.notaris.soro.models.clients.Physique;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 @Data

@@ -27,7 +27,7 @@ public class MoralServiceImpl implements MoralService {
         List<String> errors = MoralValidator.validate(dto);
         if(!errors.isEmpty()){
             log.info("l'objet fournit est null");
-            throw new InvalidEntityException("L'objet est invalide {}");
+            throw new InvalidEntityException("L'objet est invalide {}", errors);
         }
         return MoralDTO.toEntityDTO(moralRepository.save(MoralDTO.toEntity(dto)));
     }

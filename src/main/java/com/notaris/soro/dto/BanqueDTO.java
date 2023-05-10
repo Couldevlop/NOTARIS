@@ -1,7 +1,7 @@
 package com.notaris.soro.dto;
 
 import com.notaris.soro.enums.Nature;
-import com.notaris.soro.models.Banque;
+import com.notaris.soro.models.clients.Banque;
 import lombok.Builder;
 import lombok.Data;
 
