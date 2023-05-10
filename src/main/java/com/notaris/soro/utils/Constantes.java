@@ -7,6 +7,7 @@ public interface Constantes {
     String CLIENT_PHYSIQUE_END_POINT = APP_ROOT+ "/physique";
     String ACTE_IMMO_END_POINT = APP_ROOT+ "/acteimmobilier";
     String TYPE_DOCUMENT_END_POINT = APP_ROOT+ "/typedocumment";
-
     String LIQUIDATION_COMMUNAUTE_END_POINT = APP_ROOT+ "/liquidation/communaute";
+
+    String LIQUIDATION_SESSION_END_POINT = APP_ROOT+ "/liquidation/sessions";
 }
