@@ -1,7 +1,6 @@
 package com.notaris.soro.repositories;
 
-import com.notaris.soro.dto.BanqueDTO;
-import com.notaris.soro.models.Banque;
+import com.notaris.soro.models.clients.Banque;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,5 +1,7 @@
-package com.notaris.soro.models;
+package com.notaris.soro.models.clients;
 
+import com.notaris.soro.models.AbstractEntity;
+import com.notaris.soro.models.Adresse;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;

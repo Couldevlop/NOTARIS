@@ -1,6 +1,6 @@
 package com.notaris.soro.repositories;
 
-import com.notaris.soro.models.Physique;
+import com.notaris.soro.models.clients.Physique;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

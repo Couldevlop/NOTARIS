@@ -25,7 +25,7 @@ public class TypeDocumentServiceImpl implements TypeDocumentService {
 
         List<String> errors = TypeDocumentValidator.validate(dto);
         if(!errors.isEmpty()){
-            log.info("l'objet que vous voulez enregistrer est introuve {}", dto);
+            log.info("l'objet que vous voulez enregistrer est introuve {}" + dto, errors);
         }
         return TypeDocumentDTO.toEntityDTO(typeDocumentRepository.save(TypeDocumentDTO.toEntity(dto)));
 

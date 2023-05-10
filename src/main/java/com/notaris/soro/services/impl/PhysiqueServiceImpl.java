@@ -26,7 +26,7 @@ public class PhysiqueServiceImpl implements PhysiqueService {
         List<String> errors = PhysiqueValidator.validate(dto);
         if(!errors.isEmpty()){
             log.info("l'objet est invalide");
-            throw new InvalidEntityException("L'objet est invalide");
+            throw new InvalidEntityException("L'objet est invalide {}" + dto, errors);
         }
         return PhysiqueDTO.toEntityDTO(physiqueRepository.save(PhysiqueDTO.toEntity(dto)));
     }

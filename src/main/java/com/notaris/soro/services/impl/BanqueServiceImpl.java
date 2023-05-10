@@ -5,6 +5,8 @@ import com.notaris.soro.exceptions.EntityNotFoundException;
 import com.notaris.soro.exceptions.InvalidEntityException;
 import com.notaris.soro.repositories.BanqueRepository;
 import com.notaris.soro.services.BanqueService;
+import com.notaris.soro.validators.BanqueValidator;
+import com.notaris.soro.validators.MoralValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -26,9 +28,10 @@ public class BanqueServiceImpl implements BanqueService {
 
     @Override
     public BanqueDTO save(BanqueDTO dto) {
-        if(dto == null){
+        List<String> errors = BanqueValidator.validate(dto);
+        if(!errors.isEmpty()){
             log.info("l'objet fourni est invalid");
-            throw new InvalidEntityException("Objet invalid");
+            throw new InvalidEntityException("Objet invalid",errors);
         }
         return BanqueDTO.toEntityDTO(banqueRepository.save(BanqueDTO.toEntity(dto)));
     }
