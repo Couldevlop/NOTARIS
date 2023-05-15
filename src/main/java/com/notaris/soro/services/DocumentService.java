@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 
 
 public interface DocumentService {
-    public Documents store(MultipartFile[] file) throws IOException;
+    public Documents store(MultipartFile file) throws IOException;
     public Documents getFile(Integer id);
      public Stream<Documents> getAllFiles();
 

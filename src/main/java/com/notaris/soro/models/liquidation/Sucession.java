@@ -1,6 +1,5 @@
 package com.notaris.soro.models.liquidation;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.notaris.soro.models.AbstractEntity;
 import com.notaris.soro.models.clients.Physique;
 import jakarta.persistence.Column;
@@ -20,21 +19,19 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "cs_liquidationcommunaute")
-public class Communaute extends AbstractEntity implements Serializable {
-
+@Table(name = "cs_liguidationsuccession")
+public class Sucession extends AbstractEntity implements Serializable {
     @Column(name = "intitule")
     private String intitule;
+    @ManyToOne
+    private TypeSession typeSession;
 
     @Column(name = "dateouverture")
     private LocalDate dateOuverture;
 
     @ManyToOne
-    @JsonIgnore
     private Physique physque;
 
     @Column(name = "commentaire")
     private String commentaire;
-
-
 }

@@ -22,10 +22,10 @@ public interface MoralApi {
     @GetMapping(value = CLIENT_MORAL_END_POINT, produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<List<MoralDTO>> findAll();
 
-    @GetMapping(value = CLIENT_MORAL_END_POINT+ "/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = CLIENT_MORAL_END_POINT+ "/email/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<MoralDTO> findByEmail(@PathVariable String email);
 
-    @GetMapping(value = CLIENT_MORAL_END_POINT+ "/{nom}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = CLIENT_MORAL_END_POINT+ "/nom/{nom}", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<MoralDTO> findByNom(@PathVariable String nom);
 
     @DeleteMapping(value = CLIENT_MORAL_END_POINT+ "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

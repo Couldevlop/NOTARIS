@@ -1,5 +1,6 @@
 package com.notaris.soro.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.notaris.soro.models.clients.Physique;
 import com.notaris.soro.models.liquidation.Communaute;
 import lombok.Builder;
@@ -15,7 +16,7 @@ public class CommunauteDTO {
     private String intitule;
 
     private LocalDate dateOuverture;
-
+    @JsonIgnore
     private Physique physque;
 
     private String commentaire;

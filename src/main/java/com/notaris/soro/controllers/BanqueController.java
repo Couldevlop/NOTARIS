@@ -4,11 +4,15 @@ import com.notaris.soro.controllers.api.BanqueApi;
 import com.notaris.soro.dto.BanqueDTO;
 import com.notaris.soro.services.BanqueService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class BanqueController implements BanqueApi {
 
     private final BanqueService banqueService;
@@ -18,8 +22,8 @@ public class BanqueController implements BanqueApi {
     }
 
     @Override
-    public ResponseEntity<BanqueDTO> save(BanqueDTO dto) {
-        return ResponseEntity.ok(banqueService.save(dto));
+    public ResponseEntity<BanqueDTO> save( MultipartFile file,BanqueDTO dto) throws IOException {
+        return ResponseEntity.ok(banqueService.save(file,dto));
     }
 
     @Override

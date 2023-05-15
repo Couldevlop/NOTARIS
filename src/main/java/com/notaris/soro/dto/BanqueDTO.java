@@ -18,10 +18,6 @@ public class BanqueDTO {
 
     private AdresseDTO adresse;
 
-    private Nature nature;
-
-    private String activite;
-
     private String numRCCM;
 
     private String DFE;
@@ -43,10 +39,8 @@ public class BanqueDTO {
                 .id(banque.getId())
                 .fax(banque.getFax())
                 .logo(banque.getLogo())
-                .activite(banque.getActivite())
                 .numRCCM(banque.getNumRCCM())
                 .DFE(banque.getDFE())
-                .nature(banque.getNature())
                 .nomDirigeant(banque.getNomDirigeant())
                 .sigle(banque.getSigle())
                 .adresse(AdresseDTO.toEntityDTO(banque.getAdresse()))
@@ -61,11 +55,9 @@ public class BanqueDTO {
         }
 
         Banque b = new Banque();
-        b.setActivite(dto.getActivite());
         b.setDFE(dto.getDFE());
         b.setFax(dto.getFax());
         b.setLogo(dto.getLogo());
-        b.setNature(dto.nature);
         b.setNumRCCM(dto.getNumRCCM());
         b.setRaisonSociale(dto.getRaisonSociale());
         b.setFixe(dto.getFixe());

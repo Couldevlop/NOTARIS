@@ -30,12 +30,6 @@ public class Banque extends AbstractEntity implements Serializable {
     @Embedded
     private Adresse adresse;
 
-    @Column(name = "nature")
-    private Nature nature;
-
-    @Column(name = "activite")
-    private String activite;
-
     @Column(name = "numrccm")
     private String numRCCM;
 

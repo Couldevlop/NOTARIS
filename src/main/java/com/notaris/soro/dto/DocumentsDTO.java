@@ -12,10 +12,6 @@ import lombok.Data;
 public class DocumentsDTO {
     private Integer id;
 
-   /* private Integer dossierId;
-
-    private TypeDocument typeDocument;*/
-
     private String docName;
     private String docType;
 

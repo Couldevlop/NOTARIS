@@ -2,14 +2,16 @@ package com.notaris.soro.controllers;
 
 
 import com.notaris.soro.controllers.api.SessionsApi;
-import com.notaris.soro.dto.SessionsDTO;
+import com.notaris.soro.dto.SucessionDTO;
 import com.notaris.soro.services.SessionsService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin("http://localhost:8086")
 public class SessionsController implements SessionsApi {
     private final SessionsService sessionsService;
 
@@ -19,22 +21,22 @@ public class SessionsController implements SessionsApi {
 
 
     @Override
-    public ResponseEntity<SessionsDTO> save(SessionsDTO dto) {
+    public ResponseEntity<SucessionDTO> save(SucessionDTO dto) {
         return ResponseEntity.ok(sessionsService.save(dto));
     }
 
     @Override
-    public ResponseEntity<SessionsDTO> findById(Integer id) {
+    public ResponseEntity<SucessionDTO> findById(Integer id) {
         return ResponseEntity.ok(sessionsService.findById(id));
     }
 
     @Override
-    public ResponseEntity<List<SessionsDTO>> findAll() {
+    public ResponseEntity<List<SucessionDTO>> findAll() {
         return ResponseEntity.ok(sessionsService.findAll());
     }
 
     @Override
-    public ResponseEntity<SessionsDTO> findByIntitule(String intituleSession) {
+    public ResponseEntity<SucessionDTO> findByIntitule(String intituleSession) {
         return ResponseEntity.ok(sessionsService.findByIntitule(intituleSession));
     }
 

@@ -4,11 +4,13 @@ import com.notaris.soro.controllers.api.CommunauteApi;
 import com.notaris.soro.dto.CommunauteDTO;
 import com.notaris.soro.services.CommunauteService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin("http://localhost:8086")
 public class CommunauteController implements CommunauteApi {
     private final CommunauteService communauteService;
 

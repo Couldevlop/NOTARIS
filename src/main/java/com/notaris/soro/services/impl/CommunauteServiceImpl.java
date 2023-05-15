@@ -56,7 +56,7 @@ public class CommunauteServiceImpl implements CommunauteService {
             throw new EntityNotFoundException("Impossible de trouver une liquidation avec un intitulé null");
         }
         return communauteRepository.findByIntitule(intitule).map(CommunauteDTO::toEntityDTO).orElseThrow(()->{
-            throw new EntityNotFoundException("Aucune liquidation avec l'intitulé: " + intitule  + "existe dans la BD");
+            throw new EntityNotFoundException("Aucune liquidation de communauté avec l'intitulé: " + intitule  + " existe dans la BD");
         });
     }
 

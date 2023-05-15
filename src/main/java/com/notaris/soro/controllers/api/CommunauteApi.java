@@ -22,7 +22,7 @@ public interface CommunauteApi {
     @GetMapping(value = LIQUIDATION_COMMUNAUTE_END_POINT, produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<List<CommunauteDTO>> findAll();
 
-    @GetMapping(value = LIQUIDATION_COMMUNAUTE_END_POINT+ "/{intitule}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = LIQUIDATION_COMMUNAUTE_END_POINT+ "/intitule/{intitule}", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<CommunauteDTO> findByIntitule(@PathVariable String intitule);
 
     @DeleteMapping(value = LIQUIDATION_COMMUNAUTE_END_POINT+ "/{id1}", produces = MediaType.APPLICATION_JSON_VALUE)

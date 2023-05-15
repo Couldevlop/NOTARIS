@@ -1,6 +1,7 @@
 package com.notaris.soro.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.notaris.soro.models.societe.Creation;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,13 +16,9 @@ import java.io.Serializable;
 @Entity
 @Table(name = "cs_document")
 public class Documents implements Serializable {
-   /* @Column(name = "dossierid")
-    private Integer dossierId;
-
-    @ManyToOne
-    private TypeDocument typeDocument;*/
-    @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+   @GenericGenerator(name = "native", strategy = "native")
 
     private Integer id;
 
@@ -34,6 +31,10 @@ public class Documents implements Serializable {
     @ManyToOne
     @JsonIgnore
     private ActeImmobilier acteimmo;
+
+    @ManyToOne
+    @JsonIgnore
+    private Creation creation;
 
 
 
