@@ -1,4 +1,4 @@
-package com.notaris.soro.models.liquidation;
+package com.notaris.soro.models.societe;
 
 import com.notaris.soro.models.AbstractEntity;
 import com.notaris.soro.models.clients.Physique;
@@ -7,7 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,21 +16,24 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Entity
-@Table(name = "cs_liguidationsuccession")
-public class Sessions extends AbstractEntity implements Serializable {
+@Table(name = "cs_creationsociete")
+public class Creation extends AbstractEntity implements Serializable {
     @Column(name = "intitule")
     private String intitule;
-    @ManyToOne
-    private TypeSession typeSession;
-
-    @Column(name = "dateouverture")
-    private LocalDate dateOuverture;
 
     @ManyToOne
-    private Physique physque;
+    private Physique physique;
+
+    @ManyToOne
+    private NatureSociete natureSociete;
+
+    @ManyToOne
+    private TypeSociete typeSociete;
 
     @Column(name = "commentaire")
     private String commentaire;
+
+    @Column(name = "dateouverture")
+    private LocalDate dateOuverture;
 }
