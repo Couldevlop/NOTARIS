@@ -1,5 +1,6 @@
 package com.notaris.soro.controllers;
 
+import com.notaris.soro.dto.DocumentsDTO;
 import com.notaris.soro.models.Documents;
 import com.notaris.soro.models.ResponseMessage;
 import com.notaris.soro.services.impl.DocumentServiceImpl;
@@ -17,9 +18,11 @@ import org.springframework.web.multipart.MultipartFile;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
-@Controller
-@CrossOrigin("http://localhost:8086")
+@RestController
+//@CrossOrigin("http://localhost:8086")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class DocumentController {
 
     private final DocumentServiceImpl storageService;
@@ -66,6 +69,11 @@ public class DocumentController {
             message = "Could not upload the file: " + file.getOriginalFilename() + "!";
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
         }
+    }
+
+    @GetMapping("/allDoc")
+    public ResponseEntity<List<DocumentsDTO>> getAll(){
+        return  ResponseEntity.ok(storageService.getFiles());
     }
 
 }

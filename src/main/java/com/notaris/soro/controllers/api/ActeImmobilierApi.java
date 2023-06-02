@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -18,6 +19,12 @@ import static com.notaris.soro.utils.Constantes.CLIENT_MORAL_END_POINT;
 public interface ActeImmobilierApi {
     @PostMapping(value = ACTE_IMMO_END_POINT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<ActeImmobilierDTO> save(@RequestBody ActeImmobilierDTO dto);
+
+    @PostMapping(value = ACTE_IMMO_END_POINT+"/file", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE,  MediaType.APPLICATION_JSON_VALUE})
+    ResponseEntity<DocumentsDTO> saveWitFile(@RequestParam(value = "file") MultipartFile file,
+                                             @RequestParam(value = "intitule") String intitule,
+                                             @RequestParam(value="id") String id,
+                                             @RequestParam(value = "typeDoc")  String typeDoc);
 
     @GetMapping(value = ACTE_IMMO_END_POINT+ "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<ActeImmobilierDTO> findById(@PathVariable(value = "id") Integer id);

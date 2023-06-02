@@ -28,7 +28,10 @@ public class Moral extends AbstractEntity implements Serializable {
     private String raisonSociale;
 
     @Column(name = "nature")
-    private Nature nature;
+    private String nature;
+
+    @Column(name = "email")
+    private String email;
 
     @Column(name = "activite")
     private String activite;

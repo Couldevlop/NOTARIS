@@ -56,6 +56,17 @@ public class BanqueServiceImpl implements BanqueService {
     }
 
     @Override
+    public BanqueDTO create(BanqueDTO dto) {
+        List<String> errors = BanqueValidator.validate(dto);
+        if(!errors.isEmpty()){
+            log.info("l'objet fourni est invalid");
+            throw new InvalidEntityException("Objet invalid",errors);
+        }
+
+        return BanqueDTO.toEntityDTO(banqueRepository.save(BanqueDTO.toEntity(dto)));
+    }
+
+    @Override
     public BanqueDTO findById(Integer id) {
         if(id == null){
             log.info("l'id est null");

@@ -46,4 +46,9 @@ public class BanqueController implements BanqueApi {
         banqueService.delete(id);
         return ResponseEntity.ok().build();
     }
+
+    @Override
+    public ResponseEntity<BanqueDTO> create(BanqueDTO dto) {
+        return ResponseEntity.ok(banqueService.create(dto));
+    }
 }

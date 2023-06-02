@@ -9,6 +9,7 @@ import java.util.Optional;
 
 public interface BanqueService {
     BanqueDTO save( MultipartFile file,BanqueDTO dto) throws IOException;
+    BanqueDTO create(BanqueDTO dto);
     BanqueDTO findById(Integer id);
     List<BanqueDTO> findAll();
     BanqueDTO findBySigle(String sigle);

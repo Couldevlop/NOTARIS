@@ -16,7 +16,7 @@ public class ActeImmobilierDTO{
  private  String intitule;
  private String acquereur;
  private String vendeur;
- private TypeActeImmo typeActeImmo;
+ private String typeActeImmo;
  private String mandataire;
  private String commentaire;
  @JsonIgnore

@@ -7,17 +7,20 @@ import jakarta.persistence.Lob;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Builder
 public class DocumentsDTO {
     private Integer id;
-
+    private String intitule;
     private String docName;
     private String docType;
-
-    @Lob
-    @JsonIgnore
-    private byte[] data;
+    public String typeDoc;
+    //@JsonIgnore
+    //private byte[] data;
     @JsonIgnore
     private ActeImmobilier acteimmo;
 
@@ -30,8 +33,10 @@ public class DocumentsDTO {
                 .id(doc.getId())
                 .docName(doc.getDocName())
                 .docType(doc.getDocType())
-                .data(doc.getData())
+                //.data(doc.getData())
+                .intitule(doc.getIntitule())
                 .acteimmo(doc.getActeimmo())
+                .typeDoc(doc.getTypeDoc())
                 .build();
     }
 
@@ -41,8 +46,19 @@ public class DocumentsDTO {
         doc.setId(dto.getId());
         doc.setDocName(dto.getDocName());
         doc.setDocType(dto.getDocType());
-        doc.setData(dto.getData());
+      //  doc.setData(dto.getData());
+        doc.setIntitule(dto.getIntitule());
         doc.setActeimmo(dto.getActeimmo());
+        doc.setDocType(dto.getTypeDoc());
         return doc;
+    }
+
+
+    public static List<DocumentsDTO> toListEntityDTO(List<Documents> documentsList){
+        List<DocumentsDTO> dtoList = new ArrayList<>();
+        for (Documents doc: documentsList) {
+            dtoList.add(toEntityDTO(doc));
+        }
+        return dtoList;
     }
 }

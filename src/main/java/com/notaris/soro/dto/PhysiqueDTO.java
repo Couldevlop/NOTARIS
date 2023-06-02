@@ -9,6 +9,8 @@ import java.time.LocalDate;
 @Data
 @Builder
 public class PhysiqueDTO  {
+    private Integer id;
+
     private String nom;
 
     private String prenom;
@@ -44,6 +46,7 @@ public class PhysiqueDTO  {
                 .lieuDeTravail(physique.getLieuDeTravail())
                 .mobile(physique.getMobile())
                 .adresse(AdresseDTO.toEntityDTO(physique.getAdresse()))
+                .id(physique.getId())
                 .nom(physique.getNom())
                 .photo(physique.getPhoto())
                 .prenom(physique.getPrenom())
@@ -67,6 +70,9 @@ public class PhysiqueDTO  {
         physique.setFixe(dto.getFixe());
         physique.setMobile(dto.getMobile());
         physique.setPrenom(dto.getPrenom());
+        physique.setId(dto.getId());
+        physique.setProfession(dto.getProfession());
+        physique.setNom(dto.getNom());
         return physique;
     }
 }

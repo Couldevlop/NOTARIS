@@ -4,6 +4,7 @@ import com.notaris.soro.controllers.api.ActeImmobilierApi;
 import com.notaris.soro.dto.ActeImmobilierDTO;
 import com.notaris.soro.dto.DocumentsDTO;
 import com.notaris.soro.services.ActeImmoService;
+import com.notaris.soro.services.impl.DocumentServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,17 +14,25 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:8086")
+//@CrossOrigin("http://localhost:8086")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class ActeImmobilierController implements ActeImmobilierApi {
     private final ActeImmoService acteImmoService;
+    private final DocumentServiceImpl service;
 
-    public ActeImmobilierController(ActeImmoService acteImmoService) {
+    public ActeImmobilierController(ActeImmoService acteImmoService, DocumentServiceImpl service) {
         this.acteImmoService = acteImmoService;
+        this.service = service;
     }
 
     @Override
     public ResponseEntity<ActeImmobilierDTO> save(ActeImmobilierDTO dto) {
         return ResponseEntity.ok(acteImmoService.save(dto));
+    }
+
+    @Override
+    public ResponseEntity<DocumentsDTO> saveWitFile(MultipartFile file, String intitule, String id, String typeDoc) {
+        return ResponseEntity.ok(service.saveWitFile(file,intitule, id,typeDoc));
     }
 
     @Override

@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface DocumentRepository extends JpaRepository<Documents, Integer> {
     List<Documents> findAllByActeimmoId(Integer id);
 
+    Documents findByDocName(String name);
+
 }

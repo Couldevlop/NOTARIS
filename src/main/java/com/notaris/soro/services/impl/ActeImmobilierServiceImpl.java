@@ -65,7 +65,17 @@ public class ActeImmobilierServiceImpl implements ActeImmoService {
 
     @Override
     public void delete(Integer id) {
-         acteImmobilierRepository.deleteById(id);
+        if(acteImmobilierRepository.existsById(id)){
+            ActeImmobilierDTO dto = findById(id);
+            if(dto.getDocumentsDTOList().isEmpty()){
+                acteImmobilierRepository.deleteById(id);
+            }else {
+                throw new EntityNotFoundException("L'acte immobilier que vous voulez supprimer à des documents.");
+            }
+
+        }
+
+
     }
 
     @Override

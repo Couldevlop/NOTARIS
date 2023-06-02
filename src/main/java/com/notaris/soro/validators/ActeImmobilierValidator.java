@@ -26,7 +26,7 @@ public class ActeImmobilierValidator {
             errors.add("Veillez renseigner vendeur ");
         }if(!StringUtils.hasLength(dto.getIntitule())){
             errors.add("Veillez renseigner l'intitulé");
-        }if(!StringUtils.hasLength(dto.getTypeActeImmo().name())){
+        }if(!StringUtils.hasLength(dto.getTypeActeImmo())){
             errors.add("Veillez renseigner le type d'action immobilier");
         }if(!StringUtils.hasLength(dto.getCommentaire())){
             errors.add("Veillez renseigner le commentaire");

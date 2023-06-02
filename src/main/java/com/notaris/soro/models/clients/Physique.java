@@ -45,6 +45,7 @@ public class Physique extends AbstractEntity implements Serializable {
     @Column(name = "lieudetravail")
     private String lieuDeTravail;
 
+
     @Column(name = "datedenaissance")
     private LocalDate dateNaissance;
 

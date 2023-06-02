@@ -8,6 +8,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
@@ -20,6 +21,6 @@ public interface DocumentService {
     public Documents getFile(Integer id);
      public Stream<Documents> getAllFiles();
 
-
+    //DocumentsDTO saveWitFile(File file, String intitule);
 
 }

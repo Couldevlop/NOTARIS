@@ -28,4 +28,7 @@ public interface BanqueApi {
 
     @DeleteMapping(value = CLIENT_BANQUE_END_POINT+ "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity delete(Integer id);
+
+    @PostMapping(value = CLIENT_BANQUE_END_POINT+ "/new", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    ResponseEntity<BanqueDTO> create(@RequestBody BanqueDTO dto);
 }

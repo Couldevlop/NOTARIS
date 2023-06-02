@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -22,6 +23,9 @@ public class Documents implements Serializable {
 
     private Integer id;
 
+   public String typeDoc;
+
+   private String intitule;
     private String docName;
     private String docType;
 
@@ -50,5 +54,15 @@ public class Documents implements Serializable {
   this.docType = docType;
   this.data = data;
   this.acteimmo = immo;
+ }
+
+ public Documents(Integer id, String typeDoc, String intitule, String docName, String docType, byte[] data, ActeImmobilier acteimmo) {
+  this.id = id;
+  this.typeDoc = typeDoc;
+  this.intitule = intitule;
+  this.docName = docName;
+  this.docType = docType;
+  this.data = data;
+  this.acteimmo = acteimmo;
  }
 }

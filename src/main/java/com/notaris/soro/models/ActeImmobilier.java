@@ -25,8 +25,7 @@ public class ActeImmobilier extends AbstractEntity{
  private String vendeur;
 
  @Column(name = "typeacteimmo")
- @Enumerated
- private TypeActeImmo typeActeImmo;
+ private String typeActeImmo;
 
  @Column(name = "mandataire")
  private String mandataire;
