@@ -23,6 +23,16 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
            return new ResponseEntity<>(errorDTO, notfound);
     }
 
+    @ExceptionHandler(EntityAlreadyExistException.class)
+    public ResponseEntity<ErrorDTO> handleException(EntityAlreadyExistException exception, WebRequest webRequest){
+        final HttpStatus alreadyExiste = HttpStatus.ALREADY_REPORTED;
+        ErrorDTO errorDTO = ErrorDTO.builder()
+                .message(exception.getMessage())
+                .httpCode(alreadyExiste.value())
+                .build();
+        return  new ResponseEntity<>( errorDTO, alreadyExiste);
+    }
+
    /* @ExceptionHandler(MaxUploadSizeExceededException.class)
     public ResponseEntity<ResponseMessage> handleMaxSizeException(MaxUploadSizeExceededException exc) {
         return ResponseEntity

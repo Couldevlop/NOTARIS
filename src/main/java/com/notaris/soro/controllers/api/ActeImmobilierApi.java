@@ -21,7 +21,7 @@ public interface ActeImmobilierApi {
     ResponseEntity<ActeImmobilierDTO> save(@RequestBody ActeImmobilierDTO dto);
 
     @PostMapping(value = ACTE_IMMO_END_POINT+"/file", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE,  MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<DocumentsDTO> saveWitFile(@RequestParam(value = "file") MultipartFile file,
+    ResponseEntity<DocumentsDTO> saveWitFile(@RequestParam(value = "file", required = true) MultipartFile file,
                                              @RequestParam(value = "intitule") String intitule,
                                              @RequestParam(value="id") String id,
                                              @RequestParam(value = "typeDoc")  String typeDoc);

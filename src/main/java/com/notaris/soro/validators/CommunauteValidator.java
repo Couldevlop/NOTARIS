@@ -15,6 +15,7 @@ public class CommunauteValidator {
             errors.add("Veillez renseigner l'intitulé");
             errors.add("Veillez renseigner la date d'ouverture");
             errors.add("Veillez sélectionner un client");
+            return errors;
 
         }if(!StringUtils.hasLength(dto.getCommentaire())){
             errors.add("Veillez renseigner le commentaire");
@@ -22,7 +23,7 @@ public class CommunauteValidator {
             errors.add("Veillez renseigner l'intitulé");
         }if(!StringUtils.hasLength(dto.getDateOuverture().toString())){
             errors.add("Veillez renseigner la date d'ouverture");
-        }if(dto.getPhysque() == null){
+        }if(dto.getClient() == null){
             errors.add("Veillez sélectionner un client");
         }
 

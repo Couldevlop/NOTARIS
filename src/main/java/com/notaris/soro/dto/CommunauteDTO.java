@@ -1,12 +1,15 @@
 package com.notaris.soro.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.notaris.soro.models.DocumentsCommunaute;
 import com.notaris.soro.models.clients.Physique;
 import com.notaris.soro.models.liquidation.Communaute;
 import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Builder
@@ -16,10 +19,13 @@ public class CommunauteDTO {
     private String intitule;
 
     private LocalDate dateOuverture;
-    @JsonIgnore
-    private Physique physque;
+
+    private String client;
 
     private String commentaire;
+
+    //@JsonIgnore
+    private List<DocumentsCommunauteDTO> documentsDTOList;
 
     public static CommunauteDTO toEntityDTO(Communaute communaute){
         if(communaute == null){
@@ -27,10 +33,15 @@ public class CommunauteDTO {
         }
         return CommunauteDTO.builder()
                 .commentaire(communaute.getCommentaire())
-                .physque(communaute.getPhysque())
+                .client(communaute.getClient())
                 .dateOuverture(communaute.getDateOuverture())
                 .intitule(communaute.getIntitule())
+                .documentsDTOList(
+                        communaute.getDocuments() != null ? communaute.getDocuments().
+                                stream().map(DocumentsCommunauteDTO::toEntityDTO).collect(Collectors.toList()):null
+                )
                 .id(communaute.getId()).build();
+
 
     }
 
@@ -42,7 +53,7 @@ public class CommunauteDTO {
         communaute.setCommentaire(dto.getCommentaire());
         communaute.setDateOuverture(dto.dateOuverture);
         communaute.setIntitule(dto.getIntitule());
-        communaute.setPhysque(dto.getPhysque());
+        communaute.setClient(dto.getClient());
         communaute.setId(dto.getId());
         return communaute;
     }

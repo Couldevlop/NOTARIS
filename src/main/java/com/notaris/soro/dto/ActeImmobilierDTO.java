@@ -1,7 +1,6 @@
 package com.notaris.soro.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.notaris.soro.enums.TypeActeImmo;
 import com.notaris.soro.models.ActeImmobilier;
 import lombok.Builder;
 import lombok.Data;

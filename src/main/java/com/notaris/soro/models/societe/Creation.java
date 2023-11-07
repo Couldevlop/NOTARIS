@@ -1,5 +1,6 @@
 package com.notaris.soro.models.societe;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.notaris.soro.models.AbstractEntity;
 import com.notaris.soro.models.clients.Physique;
 import jakarta.persistence.Column;
@@ -22,14 +23,14 @@ public class Creation extends AbstractEntity implements Serializable {
     @Column(name = "intitule")
     private String intitule;
 
-    @ManyToOne
-    private Physique physique;
+    @Column(name = "client")
+    private String client;
 
-    @ManyToOne
-    private NatureSociete natureSociete;
+    @Column(name = "naturesociete")
+    private String natureSociete;
 
-    @ManyToOne
-    private TypeSociete typeSociete;
+    @Column(name = "typesociete")
+    private String typeSociete;
 
     @Column(name = "commentaire")
     private String commentaire;

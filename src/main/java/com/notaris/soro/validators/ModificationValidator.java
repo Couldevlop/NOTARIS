@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModificationValidator {
-    private List<String> validate(ModificationDTO dto){
+    public static List<String> validate(ModificationDTO dto){
         List<String> errors = new ArrayList<>();
         if(dto == null){
             errors.add("Veillez renseigner le objet");
@@ -17,6 +17,7 @@ public class ModificationValidator {
             errors.add("Veillez renseigner la nature de la societé");
             errors.add("Veillez renseigner le type de société");
             errors.add("Veillez renseigner le type le client");
+            return errors;
 
         }if(!StringUtils.hasLength(dto.getObjet())){
             errors.add("Veillez renseigner l'objet");
@@ -24,11 +25,11 @@ public class ModificationValidator {
             errors.add("Veillez renseigner le motif");
         }if(dto.getDateOuverture() == null){
             errors.add("Veillez renseigner la date d'ouverture");
-        }if(dto.getNatureSociete() == null){
+        }if(!StringUtils.hasLength(dto.getNatureSociete())){
             errors.add("Veillez renseigner la nature de la societé");
-        }if(dto.getTypeSociete() == null){
+        }if(!StringUtils.hasLength(dto.getTypeSociete())){
             errors.add("Veillez renseigner le type de société");
-        }if(dto.getPhysique() == null){
+        }if(!StringUtils.hasLength(dto.getClient())){
             errors.add("Veillez renseigner le type le client");
         }
 

@@ -65,4 +65,13 @@ public class Documents implements Serializable {
   this.data = data;
   this.acteimmo = acteimmo;
  }
+
+ public Documents(String typeDoc, String intitule, String docName, String docType, byte[] data, ActeImmobilier acteimmo) {
+  this.typeDoc = typeDoc;
+  this.intitule = intitule;
+  this.docName = docName;
+  this.docType = docType;
+  this.data = data;
+  this.acteimmo = acteimmo;
+ }
 }

@@ -1,43 +1,26 @@
 package com.notaris.soro.dto;
 
-import com.notaris.soro.enums.Nature;
 import com.notaris.soro.models.clients.Moral;
 import lombok.Builder;
 import lombok.Data;
 
 @Data
-
 @Builder
-
 public class MoralDTO  {
     private Integer id;
-
     private String sigle;
-
     private AdresseDTO adresse;
-
     private String raisonSociale;
-
     private String nature;
-
     private String email;
-
     private String activite;
-
     private String numRCCM;
-
     private String DFE;
-
     private String logo;
-
     private String fixe;
-
     private String fax;
-
     private String representantLegal;
-
     private String numPieceDirigeant;
-
     private String localisation;
 
     public static MoralDTO toEntityDTO(Moral moral){

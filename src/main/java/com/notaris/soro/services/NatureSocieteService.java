@@ -1,6 +1,6 @@
 package com.notaris.soro.services;
 
-import com.notaris.soro.dto.NatureSocieteDTO;
+import com.notaris.soro.dto.admin.NatureSocieteDTO;
 
 import java.util.List;
 

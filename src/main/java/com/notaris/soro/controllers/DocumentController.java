@@ -11,6 +11,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,7 +22,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
-//@CrossOrigin("http://localhost:8086")
+@PreAuthorize(" hasRole('MODERATOR') or hasRole('MODERATOR') or hasRole('ADMIN')")
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class DocumentController {
 
@@ -71,7 +72,7 @@ public class DocumentController {
         }
     }
 
-    @GetMapping("/allDoc")
+    @GetMapping("/notaris/v1/allDoc")
     public ResponseEntity<List<DocumentsDTO>> getAll(){
         return  ResponseEntity.ok(storageService.getFiles());
     }

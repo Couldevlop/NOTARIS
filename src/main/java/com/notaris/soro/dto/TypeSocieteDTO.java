@@ -1,15 +1,8 @@
 package com.notaris.soro.dto;
 
-import com.notaris.soro.models.AbstractEntity;
-import com.notaris.soro.models.societe.TypeSociete;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import com.notaris.soro.models.admin.TypeSociete;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
 
 @Data
 @Builder

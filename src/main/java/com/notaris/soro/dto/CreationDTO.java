@@ -1,18 +1,13 @@
 package com.notaris.soro.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.notaris.soro.models.AbstractEntity;
 import com.notaris.soro.models.clients.Physique;
 import com.notaris.soro.models.societe.Creation;
-import com.notaris.soro.models.societe.NatureSociete;
-import com.notaris.soro.models.societe.TypeSociete;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import com.notaris.soro.models.admin.NatureSociete;
+import com.notaris.soro.models.admin.TypeSociete;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -23,11 +18,11 @@ public class CreationDTO extends AbstractEntity implements Serializable {
     private Integer id;
     private String intitule;
 
-    private Physique physique;
+    private String client;
 
-    private NatureSociete natureSociete;
+    private String natureSociete;
 
-    private TypeSociete typeSociete;
+    private String typeSociete;
 
     private String commentaire;
 
@@ -43,7 +38,7 @@ public class CreationDTO extends AbstractEntity implements Serializable {
                 .dateOuverture(creation.getDateOuverture())
                 .intitule(creation.getIntitule())
                 .natureSociete(creation.getNatureSociete())
-                .physique(creation.getPhysique())
+                .client(creation.getClient())
                 .typeSociete(creation.getTypeSociete())
                 .id(creation.getId()).build();
     }
@@ -57,7 +52,7 @@ public class CreationDTO extends AbstractEntity implements Serializable {
         creation.setCommentaire(dto.getCommentaire());
         creation.setIntitule(dto.getIntitule());
         creation.setDateOuverture(dto.getDateOuverture());
-        creation.setPhysique(dto.getPhysique());
+        creation.setClient(dto.getClient());
         creation.setNatureSociete(dto.getNatureSociete());
         creation.setTypeSociete(dto.getTypeSociete());
         creation.setId(dto.getId());

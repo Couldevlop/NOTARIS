@@ -1,6 +1,7 @@
 package com.notaris.soro.services.impl;
 
 import com.notaris.soro.dto.TypeSocieteDTO;
+import com.notaris.soro.exceptions.EntityAlreadyExistException;
 import com.notaris.soro.exceptions.EntityNotFoundException;
 import com.notaris.soro.exceptions.InvalidEntityException;
 import com.notaris.soro.repositories.TypeSocieteRepository;
@@ -27,8 +28,12 @@ public class TypeSocieteServiceImpl implements TypeSocieteService {
         if(!errors.isEmpty()){
             log.info("l'objet fourni est invalide");
             throw new InvalidEntityException("Invalide objet {}" + dto , errors );
+        }if(typeSocieteRepository.findByLibelle(dto.getLibelle()) == null){
+            return TypeSocieteDTO.toEntityDTO(typeSocieteRepository.save(TypeSocieteDTO.toEntity(dto)));
+        }else {
+            log.info("Un ype de societe existe déjà avec cette denomination: " + dto.getLibelle());
+            throw new EntityAlreadyExistException("Un ype de societe existe déjà avec cette denomination: " + dto.getLibelle());
         }
-        return TypeSocieteDTO.toEntityDTO(typeSocieteRepository.save(TypeSocieteDTO.toEntity(dto)));
     }
 
     @Override
@@ -48,14 +53,14 @@ public class TypeSocieteServiceImpl implements TypeSocieteService {
     }
 
     @Override
-    public TypeSocieteDTO findByLibelle(String libelle) {
+    public TypeSocieteDTO findObjectByLibelle(String libelle) {
         if(libelle == null){
             log.info("Le libellé est null");
             throw new EntityNotFoundException("Impossible de trouver dans la BD un type de société avec un libellé null");
+        }if(typeSocieteRepository.findByLibelle(libelle) == null){
+            throw new EntityNotFoundException("Aucun type de societé n'a été trouvé dans la BD avec l'id " + libelle);
         }
-        return typeSocieteRepository.findByLibelle(libelle).map(TypeSocieteDTO::toEntityDTO).orElseThrow(()->{
-            throw  new EntityNotFoundException("Aucun type de societé n'a été trouvé dans la BD avec le libelle " + libelle);
-        });
+        return TypeSocieteDTO.toEntityDTO(typeSocieteRepository.findByLibelle(libelle));
     }
 
     @Override

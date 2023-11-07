@@ -1,13 +1,11 @@
 package com.notaris.soro.services.impl;
 
-import com.notaris.soro.dto.NatureSocieteDTO;
-import com.notaris.soro.dto.TypeSocieteDTO;
+import com.notaris.soro.dto.admin.NatureSocieteDTO;
 import com.notaris.soro.exceptions.EntityNotFoundException;
 import com.notaris.soro.exceptions.InvalidEntityException;
 import com.notaris.soro.repositories.NatureSocieteRepository;
 import com.notaris.soro.services.NatureSocieteService;
 import com.notaris.soro.validators.NatureSocieteValidator;
-import com.notaris.soro.validators.TypeSocieteValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +26,7 @@ public class NatureSocieteServiceImpl implements NatureSocieteService {
         List<String> errors = NatureSocieteValidator.validate(dto);
         if(!errors.isEmpty()){
             log.info("l'objet fourni est invalide");
-            throw new InvalidEntityException("Invalide objet {}" + dto , errors );
+            throw new InvalidEntityException("Invalide objet {} " + dto , errors );
         }
         return NatureSocieteDTO.toEntityDTO(natureSocieteRepository.save(NatureSocieteDTO.toEntity(dto)));
     }
